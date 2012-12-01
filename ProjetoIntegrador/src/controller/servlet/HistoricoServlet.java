@@ -42,22 +42,22 @@ public class HistoricoServlet extends HttpServlet {
 		
 		String campo = (String)request.getParameter("campo");
 		
+		//Busca Perguntas por Disciplina
 		if(campo.compareTo("Disciplina") == 0){
 			String disc = (String)request.getParameter("Disciplina");
-			
 			String cod = DisciplinaBD.listaDisciplinaPorCodigo(disc);
 			ArrayList<Pergunta> P = PerguntaBD.historicoPergunta(cod);
-			
 			session.setAttribute("perguntas", P);
+			
 		}
+		//Busca Perguntas por palavra chave
 		else{
 			if(campo.compareTo("palavra") == 0){
 				String key = (String)request.getParameter("Disciplina");
-				
 				ArrayList<Pergunta> P = PerguntaBD.historicoPerguntaPorPalavraChave(key);
-				
 				session.setAttribute("perguntas", P);
 			}
+			//Busca Perguntas por data da pergunta
 			else{
 				
 			}

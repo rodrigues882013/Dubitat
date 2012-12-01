@@ -100,7 +100,7 @@ $(function() {
   <div class="pesquisa" id="pesquisa"> 
   <br/> <br/>
   Pesquisar por: <br><br>
-  <form id="form1" name="form1" method="post" action="HistoricoServlet">
+  <form id="form1" name="form1" method="post" action="../HistoricoServlet">
 	<input type="radio" name="campo" value="Data" checked >Periodo<br>
 	<input type="text" name="data" id="data"> <br><br>
 	

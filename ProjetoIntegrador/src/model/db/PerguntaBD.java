@@ -598,13 +598,13 @@ public class PerguntaBD {
 			Connection c = conn.getConexao();
 
 			//Prepara a consulta a ser feita
-			PreparedStatement ps = (PreparedStatement) c.prepareStatement("SELECT id, ticket, mensagem, resposta FROM pergunta WHERE disciplina=? resposta is not null");
+			PreparedStatement ps = (PreparedStatement) c.prepareStatement("SELECT * FROM pergunta WHERE disciplina=? AND resposta is not null");
 			ps.setString(1, cod);
 			
 			ResultSet res =  (ResultSet) ps.executeQuery();
-
+			int i = 0;
 			//Adicionando a um arraylist as perguntas respondidas
-			while(res.next())
+			while((res.next()))
 			{
 				
 					Pergunta P = new Pergunta();
@@ -622,6 +622,7 @@ public class PerguntaBD {
 
 					//Adicionando ao arraylist
 					H.add(P);
+					i++;
 				
 			}
 
@@ -653,8 +654,9 @@ public class PerguntaBD {
 			
 			ResultSet res =  (ResultSet) ps.executeQuery();
 
-			//Adicionando a um arraylist as perguntas respondidas
-			while(res.next())
+			int i = 0;
+			//Adicionando a um arraylist as perguntas respondidas, no máximo 10 perguntas
+			while(res.next() || i < 10)
 			{
 				
 					Pergunta P = new Pergunta();
@@ -672,6 +674,7 @@ public class PerguntaBD {
 
 					//Adicionando ao arraylist
 					H.add(P);
+					i++;
 				
 			}
 
